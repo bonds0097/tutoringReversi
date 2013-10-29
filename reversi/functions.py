@@ -18,3 +18,7 @@ def setPlayer2Shape(player1, player2):
 		player2["shape"] = "O"
 	else:
 		player2["shape"] = "X"
+
+def getMove(currentPlayer, board):
+	(x, y) = input("Please input the x and y coordinates for your move.\n")
+	return Move()
