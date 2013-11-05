@@ -1,6 +1,7 @@
 #Name: Reversi Functions
 #Author: Andrew Mickle, Lachlan Sneff
 
+from Move import Move
 
 def getPlayerData(playerNumber):
 	playerName = input("What is your name?\n")
@@ -21,4 +22,4 @@ def setPlayer2Shape(player1, player2):
 
 def getMove(currentPlayer, board):
 	(x, y) = input("Please input the x and y coordinates for your move.\n")
-	return Move()
+	return Move(currentPlayer["shape"], x-1, y-1, board)
