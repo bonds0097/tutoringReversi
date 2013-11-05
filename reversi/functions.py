@@ -4,7 +4,7 @@
 from Move import Move
 
 def getPlayerData(playerNumber):
-	playerName = input("What is your name?\n")
+	playerName = input("Player {0}, What is your name?\n", playerNumber)
 	playerShape = None
 
 	if playerNumber == 1:
