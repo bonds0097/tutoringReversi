@@ -1,14 +1,13 @@
-class Move:
+from space import Space
+
+class Move(Space):
 
 	def __init__(self, shape, x, y, board):
+		super(Move, self).__init__(x, y)
 		#define shape
-		self.shape = "shape"
-		#define x
-		self.x = "x"
-		#define y
-		self.y = "y"
+		self.shape = shape
 		#define board
-		self.board = "board"
+		self.board = board
 
 	def isMoveValid(self, currentPlayer):
 		#check if the move is on the board
@@ -22,7 +21,7 @@ class Move:
 			return False
 		else:
 			return True
-		
+
 	def tilesToFlip(self):
 		#define opposite space
 		oppositeSpace = 'X' if move.shape == 'O' else 'O'
