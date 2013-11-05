@@ -36,15 +36,45 @@ class Board:
 
 
     def isSpaceOnBoard(self, space):
-        if x >= 0 <= 7 and y >= 0 <=  7:
-            return true
+        if space.x >= 0 and space.x <= 7 and space.y >= 0 and space.y <=  7:
+            return True
         else:
-            return false
+            return False
 
-    # def isSpaceOccupied():
+    def isSpaceOccupied(self, space):
+        if self.spaces[space.x][space.y] == " ":
+            return False
+        else:
+            return True
 
-    # def getValidMoves(self):
+    def getValidMoves(self, board):
+        validMoves = []
+        for shape in ("X", "O"):
+            for rowNumber in range(8):
+                for columnNumber in range(8):
+                    move = Move(shape, rowNumber, columnNumber, self)
+                    if move.isMoveValid():
+                        validMoves.append(move)
 
-    # def calculateScore(self):
+        return validMoves
 
-    # def flipTiles(tilesToFlip):
+
+    def calculateScore(self, board):
+        scoreO = 0
+        scoreX = 0
+        for row in self.spaces:
+            for space in row:
+                if space == "O":
+                    scoreO += 1
+                elif space == "X":
+                    scoreX += 1
+        return {"X": scoreX, "O": scoreO}
+
+
+    def flipTiles(self, tilesToFlip):
+        for space in tilesToFlip:
+            if self.spaces[space.x][space.y] == "X":
+                self.spaces[space.x][space.y] = "O"
+            else:
+                self.spaces[space.x][space.y] = "X"
+

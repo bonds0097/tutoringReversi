@@ -9,7 +9,7 @@ class Move(Space):
 		#define board
 		self.board = board
 
-	def isMoveValid(self, currentPlayer):
+	def isMoveValid(self):
 		#check if the move is on the board
 		if not self.board.isMoveOnBoard(self):
 			return False
@@ -24,7 +24,7 @@ class Move(Space):
 
 	def tilesToFlip(self):
 		#define opposite space
-		oppositeSpace = 'X' if move.shape == 'O' else 'O'
+		oppositeShape = 'X' if move.shape == 'O' else 'O'
 		#in each direction, check tiles to flip
 		directions = [
 		{"x": 0, "y": 1},
@@ -39,12 +39,12 @@ class Move(Space):
 		tilesToFlipList = []
 		for direction in directions:
 			#define the starting space, then go 1 in the direction
-			currentSpace = {"x": self.x, "y": self.y}
-			currentSpace["x"] += direction["x"]
-			currentSpace["y"] += direction["y"]
+			currentSpace = Space(self.x, self.y)
+			currentSpace.x += direction["x"]
+			currentSpace.y += direction["y"]
 			#check whether to keep adding spaces to flip or to stop
-			while currentSpace == oppositeSpace:
-				tilesToFlipList.append([currentSpace])
-				currentSpace["x"] += direction["x"]
-				currentSpace["y"] += direction["y"]
+			while self.board.spaces[currentSpace.x][currantSpace.y] == oppositeSpace:
+				tilesToFlipList.append(currentSpace)
+				currentSpace.x += direction["x"]
+				currentSpace.y += direction["y"]
 		return tilesToFlipList
