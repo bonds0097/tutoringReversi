@@ -4,7 +4,7 @@
 from Move import Move
 
 def getPlayerData(playerNumber):
-	playerName = input("Player {0}, What is your name?\n", playerNumber)
+	playerName = input("Player {0}, What is your name?\n".format(playerNumber))
 	playerShape = None
 
 	if playerNumber == 1:
@@ -21,5 +21,6 @@ def setPlayer2Shape(player1, player2):
 		player2["shape"] = "X"
 
 def getMove(currentPlayer, board):
-	(x, y) = input("Please input the x and y coordinates for your move.\n")
+	(x, y) = input("Please input the x and y coordinates for your move.\n").split()
+	(x, y) = (int(x), int(y))
 	return Move(currentPlayer["shape"], x-1, y-1, board)

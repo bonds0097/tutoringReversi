@@ -1,3 +1,5 @@
+from Move import Move
+
 class Board:
     def __init__(self):
         # Make empty list
@@ -47,7 +49,7 @@ class Board:
         else:
             return True
 
-    def getValidMoves(self, board):
+    def getValidMoves(self):
         validMoves = []
         for shape in ("X", "O"):
             for rowNumber in range(8):
@@ -59,7 +61,7 @@ class Board:
         return validMoves
 
 
-    def calculateScore(self, board):
+    def calculateScore(self):
         scoreO = 0
         scoreX = 0
         for row in self.spaces:
