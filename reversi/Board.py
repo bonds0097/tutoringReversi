@@ -44,17 +44,16 @@ class Board:
             return False
 
     def isSpaceOccupied(self, space):
-        if self.spaces[space.x][space.y] == " ":
+        if self.spaces[space.y][space.x] == " ":
             return False
         else:
             return True
 
-    def getValidMoves(self):
+    def getValidMoves(self, player):
         validMoves = []
-        for shape in ("X", "O"):
-            for rowNumber in range(8):
+        for rowNumber in range(8):
                 for columnNumber in range(8):
-                    move = Move(shape, rowNumber, columnNumber, self)
+                    move = Move(player["shape"], rowNumber, columnNumber, self)
                     if move.isMoveValid():
                         validMoves.append(move)
 
@@ -75,8 +74,13 @@ class Board:
 
     def flipTiles(self, tilesToFlip):
         for space in tilesToFlip:
-            if self.spaces[space.x][space.y] == "X":
-                self.spaces[space.x][space.y] = "O"
+            if self.spaces[space.y][space.x] == "X":
+                self.spaces[space.y][space.x] = "O"
             else:
-                self.spaces[space.x][space.y] = "X"
+                self.spaces[space.y][space.x] = "X"
 
+    def doMove(self, move):
+        # Change the move position to right shape.
+        self.spaces[move.y][move.x] = move.shape
+        # Flips all correct tiles.
+        self.flipTiles(move.tilesToFlip())

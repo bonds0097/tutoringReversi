@@ -1,3 +1,5 @@
+from copy import copy
+
 from space import Space
 
 class Move(Space):
@@ -42,10 +44,15 @@ class Move(Space):
 			currentSpace = Space(self.x, self.y)
 			currentSpace.x += direction["x"]
 			currentSpace.y += direction["y"]
+			pendingTiles = []
 			#check whether to keep adding spaces to flip or to stop
-			while (self.board.isSpaceOnBoard(currentSpace) and
-			 	   self.board.spaces[currentSpace.x][currentSpace.y] == oppositeShape):
-				tilesToFlipList.append(currentSpace)
-				currentSpace.x += direction["x"]
-				currentSpace.y += direction["y"]
+			while self.board.isSpaceOnBoard(currentSpace) and self.board.spaces[currentSpace.y][currentSpace.x] != " ":
+				if self.board.spaces[currentSpace.y][currentSpace.x] == oppositeShape:
+					pendingTiles.append(copy(currentSpace))
+					currentSpace.x += direction["x"]
+					currentSpace.y += direction["y"]
+				elif self.board.spaces[currentSpace.y][currentSpace.x] == self.shape:
+					tilesToFlipList += pendingTiles
+					break
+
 		return tilesToFlipList

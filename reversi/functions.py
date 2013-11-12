@@ -21,6 +21,6 @@ def setPlayer2Shape(player1, player2):
 		player2["shape"] = "X"
 
 def getMove(currentPlayer, board):
-	(x, y) = input("Please input the x and y coordinates for your move.\n").split()
+	(x, y) = input("{0}, please input the x and y coordinates for your move.\n".format(currentPlayer["name"])).split()
 	(x, y) = (int(x), int(y))
-	return Move(currentPlayer["shape"], x-1, y-1, board)
+	return Move(currentPlayer["shape"], x-1, y-1,board)

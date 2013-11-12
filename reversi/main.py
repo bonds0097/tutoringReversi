@@ -32,9 +32,10 @@ board = Board()
 board.resetBoard()
 #Start Loop
 #Any Valid Moves? (getValidMoves)
-while board.getValidMoves():
+while board.getValidMoves(currentPlayer):
     #Draw Board (drawBoard)
     board.drawBoard()
+    move = None
     #Start loop
     while True:
         #Ask for move (getMove)
@@ -46,7 +47,7 @@ while board.getValidMoves():
             print("Invalid Move. Try again.")
     #End Loop
     #Flip opponent pieces(tiles to flip)
-    board.flipTiles(move.tilesToFlip())
+    board.doMove(move)
 
     # Change current player.
     if currentPlayer == player1:
