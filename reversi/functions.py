@@ -11,6 +11,7 @@ def getPlayerData(playerNumber):
 		while not (playerShape in ["X", "O"]):
 			playerShape = input("X or O? Which will it be? (X/O)\n").upper()
 
+<<<<<<< HEAD
 	return {"name": playerName, "shape": playerShape}
 
 
@@ -28,4 +29,17 @@ def getMove(currentPlayer, board):
 			break
 		except ValueError:
 			print("Your input was invalid. Please try again.")
+=======
+	return Player(playerShape, playerName)
+
+def setPlayer2Shape(player1, player2):
+	if player1.shape == "X":
+		player2.shape = "O"
+	else:
+		player2.shape = "X"
+
+def getMove(currentPlayer, board):
+	(x, y) = input("{0}, please input the x and y coordinates for your move.\n".format(currentPlayer["name"])).split()
+	(x, y) = (int(x), int(y))
+>>>>>>> 96041ffde80eee02ab1ab0c1c22a61dcbe1b8a00
 	return Move(currentPlayer["shape"], x-1, y-1,board)

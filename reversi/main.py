@@ -58,10 +58,15 @@ while board.getValidMoves(currentPlayer):
 #Calculate Score & Declare Winner (calculateScore, declareWinner)
 score = board.calculateScore()
 if score["X"] > score["O"]:
+<<<<<<< HEAD
     board.drawBoard()
     print("X Wins!")
 elif score["X"] < score["O"]:
     board.drawBoard()
+=======
+    print("X Wins!")
+elif score["X"] < score["O"]:
+>>>>>>> 96041ffde80eee02ab1ab0c1c22a61dcbe1b8a00
     print("O Wins!")
 else:
     print("Tie!")
