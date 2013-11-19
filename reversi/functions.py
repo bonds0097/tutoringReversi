@@ -11,14 +11,13 @@ def getPlayerData(playerNumber):
 		while not (playerShape in ["X", "O"]):
 			playerShape = input("X or O? Which will it be? (X/O)\n").upper()
 
-	return {"name": playerName, "shape": playerShape}
-
+	return Player(playerShape, playerName)
 
 def setPlayer2Shape(player1, player2):
-	if player1["shape"] == "X":
-		player2["shape"] = "O"
+	if player1.shape == "X":
+		player2.shape = "O"
 	else:
-		player2["shape"] = "X"
+		player2.shape = "X"
 
 def getMove(currentPlayer, board):
 	(x, y) = input("{0}, please input the x and y coordinates for your move.\n".format(currentPlayer["name"])).split()
