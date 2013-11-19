@@ -1,8 +1,5 @@
 from Move import Move
-<<<<<<< HEAD
 from Space import Space
-=======
->>>>>>> 96041ffde80eee02ab1ab0c1c22a61dcbe1b8a00
 
 class Board:
     def __init__(self):
@@ -23,17 +20,11 @@ class Board:
             for space in row:
                 space = " "
         # Sets starting positions
-<<<<<<< HEAD
         self.setSpace(Space(3, 3), "O")
         self.setSpace(Space(3, 4), "X")
         self.setSpace(Space(4, 3), "X")
         self.setSpace(Space(4, 4), "O")
-=======
-        self.spaces[3][3] = "O"
-        self.spaces[3][4] = "X"
-        self.spaces[4][3] = "X"
-        self.spaces[4][4] = "O"
->>>>>>> 96041ffde80eee02ab1ab0c1c22a61dcbe1b8a00
+
 
     def drawBoard(self):
         # Draw top row numbers
@@ -55,11 +46,7 @@ class Board:
             return False
 
     def isSpaceOccupied(self, space):
-<<<<<<< HEAD
-        if self.setSpace(Space(y, x), " "):
-=======
-        if self.spaces[space.y][space.x] == " ":
->>>>>>> 96041ffde80eee02ab1ab0c1c22a61dcbe1b8a00
+        if self.getSpace(space) == " ":
             return False
         else:
             return True
@@ -89,7 +76,6 @@ class Board:
 
     def flipTiles(self, tilesToFlip):
         for space in tilesToFlip:
-<<<<<<< HEAD
             if self.getSpace(space) == "X":
                 self.setSpace(space, "O")
             else:
@@ -106,15 +92,3 @@ class Board:
 
     def setSpace(self, space, shape):
         self.spaces[space.y][space.x] = shape
-=======
-            if self.spaces[space.y][space.x] == "X":
-                self.spaces[space.y][space.x] = "O"
-            else:
-                self.spaces[space.y][space.x] = "X"
-
-    def doMove(self, move):
-        # Change the move position to right shape.
-        self.spaces[move.y][move.x] = move.shape
-        # Flips all correct tiles.
-        self.flipTiles(move.tilesToFlip())
->>>>>>> 96041ffde80eee02ab1ab0c1c22a61dcbe1b8a00
