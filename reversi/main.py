@@ -8,7 +8,6 @@ from functions import setPlayer2Shape
 from functions import getMove
 from board import Board
 from Move import Move
-
 #introduce game
 print("Welcome to Reversi!")
 #get player 1 data
@@ -17,7 +16,7 @@ player1 = getPlayerData(1)
 #Ask for Player 2 Name & Shape.(getPlayerData)
 player2 = getPlayerData(2)
 setPlayer2Shape(player1, player2)
-print("Player 2, your shape is {0}".format(player2["shape"]))
+print("Player 2, your shape is {0}".format(player2.shape))
 
 #Generate random number to decide who goes first.
 if random.randint(1, 2) == 1:
@@ -25,7 +24,7 @@ if random.randint(1, 2) == 1:
 else:
     currentPlayer = player2
 
-print("{0} is going first!".format(currentPlayer["name"]))
+print("{0} is going first!".format(currentPlayer.name))
 
 #Generate Board + Middle Pieces (createBoard, resetBoard)
 board = Board()

@@ -55,7 +55,7 @@ class Board:
         validMoves = []
         for rowNumber in range(8):
                 for columnNumber in range(8):
-                    move = Move(player["shape"], rowNumber, columnNumber, self)
+                    move = Move(player.shape, rowNumber, columnNumber, self)
                     if move.isMoveValid():
                         validMoves.append(move)
 
