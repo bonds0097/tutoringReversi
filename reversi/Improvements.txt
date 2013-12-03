@@ -1,6 +1,6 @@
 Display score when drawing board for both players and at end
 DONE - error handling for getMove -  for ValueError
-hint system
+DONE _ hint system
 DONE - draw board when someone Wins
 DONE - implementing getSpace function.
 implement AI

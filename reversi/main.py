@@ -27,7 +27,7 @@ print("{0} is going first!".format(currentPlayer.name))
 #Any Valid Moves? (getValidMoves)
 while board.getValidMoves(currentPlayer):
     #Draw Board (drawBoard)
-    board.drawBoard()
+    board.drawBoard(currentPlayer)
     move = None
     #Start loop
     while True:
@@ -49,7 +49,7 @@ while board.getValidMoves(currentPlayer):
         currentPlayer = board.player1
 #end loop
 #Calculate Score & Declare Winner (calculateScore, declareWinner)
-board.drawBoard()
+board.drawBoard(None)
 score = board.calculateScore()
 if score["X"] > score["O"]:
     print("X Wins!")

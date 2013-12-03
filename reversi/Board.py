@@ -11,7 +11,7 @@ class Board:
             self.spaces.append([])
         # For each list, append 8 empty spaces
         for list in self.spaces:
-            for x in range(1,9):    
+            for x in range(1,9):
                 list.append(' ')
         #get player 1 data
         self.player1 = self.getPlayerData(1)
@@ -31,7 +31,15 @@ class Board:
         self.setSpace(Space(4, 4), "O")
 
 
-    def drawBoard(self):
+    def drawBoard(self, currentPlayer):
+        # Set Hint Spaces
+        validMoves = None
+        if currentPlayer.hints:
+            #Get list of Valid spaces
+            validMoves = self.getValidMoves(currentPlayer)
+            #Draw an asterisk(*) at each valid space
+            for space in validMoves:
+                self.setSpace(space, "*")
         # Draw score
         print("{0:8}: {1:02} | {2:8}: {3:02}".format(self.player1.name, self.player1.score, self.player2.name, self.player2.score))
         # Draw top row numbers
@@ -42,11 +50,17 @@ class Board:
             for space in self.spaces[rowNumber]:
                 print("[" + space + "]", end='')
             print()
+        # Revert Hint Spaces if needed.
+        if validMoves:
+            for space in validMoves:
+                    self.setSpace(space, " ")
+
+
 
     def getPlayerData(self, playerNumber):
         playerName = input("Player {0}, What is your name?\n".format(playerNumber))
         playerShape = None
-        if input("Do you want hints? (Y/N)\n") == "Y":
+        if input("Do you want hints? (Y/N)\n").upper() == "Y":
             hints = True
         else:
             hints = False
@@ -54,7 +68,7 @@ class Board:
             while not (playerShape in ["X", "O"]):
                 playerShape = input("X or O? Which will it be? (X/O)\n").upper()
         return Player(playerShape, playerName, hints)
-    
+
     def setPlayer2Shape(self, player1, player2):
         if player1.shape == "X":
             player2.shape = "O"
