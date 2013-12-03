@@ -40,6 +40,8 @@ class Board:
             #Draw an asterisk(*) at each valid space
             for space in validMoves:
                 self.setSpace(space, "*")
+        # Calculate score
+        self.calculateScore()
         # Draw score
         print("{0:8}: {1:02} | {2:8}: {3:02}".format(self.player1.name, self.player1.score, self.player2.name, self.player2.score))
         # Draw top row numbers
@@ -99,15 +101,13 @@ class Board:
 
 
     def calculateScore(self):
-        scoreO = 0
-        scoreX = 0
-        for row in self.spaces:
-            for space in row:
-                if space == "O":
-                    scoreO += 1
-                elif space == "X":
-                    scoreX += 1
-        return {"X": scoreX, "O": scoreO}
+        self.player1.score = 0
+        self.player2.score = 0
+        for player in (self.player1, self.player2):
+            for row in self.spaces:
+                for space in row:
+                    if space == player.shape:
+                        player.score += 1
 
 
     def flipTiles(self, tilesToFlip):
