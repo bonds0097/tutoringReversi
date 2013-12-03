@@ -3,8 +3,6 @@
 
 import random
 
-from functions import getPlayerData
-from functions import setPlayer2Shape
 from functions import getMove
 from board import Board
 from Move import Move

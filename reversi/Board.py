@@ -14,10 +14,10 @@ class Board:
             for x in range(1,9):    
                 list.append(' ')
         #get player 1 data
-        self.player1 = getPlayerData(1)
+        self.player1 = self.getPlayerData(1)
         #Ask for Player 2 Name & Shape.(getPlayerData)
-        self.player2 = getPlayerData(2)
-        setPlayer2Shape(self.player1, self.player2)
+        self.player2 = self.getPlayerData(2)
+        self.setPlayer2Shape(self.player1, self.player2)
 
     def resetBoard(self):
         # Sets all spaces to blank
@@ -33,7 +33,7 @@ class Board:
 
     def drawBoard(self):
         # Draw score
-        print("{0}: {1}, {2}: {3}", player1.name, player1.score, player2.name, player2.score)
+        print("{0:8}: {1:02} | {2:8}: {3:02}".format(self.player1.name, self.player1.score, self.player2.name, self.player2.score))
         # Draw top row numbers
         print("   1  2  3  4  5  6  7  8")
         # for each row,draw row number
@@ -43,8 +43,23 @@ class Board:
                 print("[" + space + "]", end='')
             print()
 
-
-
+    def getPlayerData(self, playerNumber):
+        playerName = input("Player {0}, What is your name?\n".format(playerNumber))
+        playerShape = None
+        if input("Do you want hints? (Y/N)\n") == "Y":
+            hints = True
+        else:
+            hints = False
+        if playerNumber == 1:
+            while not (playerShape in ["X", "O"]):
+                playerShape = input("X or O? Which will it be? (X/O)\n").upper()
+        return Player(playerShape, playerName, hints)
+    
+    def setPlayer2Shape(self, player1, player2):
+        if player1.shape == "X":
+            player2.shape = "O"
+        else:
+            player2.shape = "X"
 
     def isSpaceOnBoard(self, space):
         if space.x >= 0 and space.x <= 7 and space.y >= 0 and space.y <=  7:

@@ -3,23 +3,6 @@
 
 from Move import Move
 from Player import Player
-def getPlayerData(playerNumber):
-	playerName = input("Player {0}, What is your name?\n".format(playerNumber))
-	playerShape = None
-	if input("Do you want hints? (Y/N)\n") == "Y":
-		hints = True
-	else:
-		hints = False
-	if playerNumber == 1:
-		while not (playerShape in ["X", "O"]):
-			playerShape = input("X or O? Which will it be? (X/O)\n").upper()
-	return Player(playerShape, playerName, hints)
-
-def setPlayer2Shape(player1, player2):
-	if player1.shape == "X":
-		player2.shape = "O"
-	else:
-		player2.shape = "X"
 
 def getMove(currentPlayer, board):
 	while True:

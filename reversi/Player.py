@@ -6,6 +6,6 @@ class Player():
         #define shape
         self.shape = shape
         #define score
-        self.score = 0
+        self.score = 2
         self.hints = hints
 
