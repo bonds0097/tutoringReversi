@@ -8,27 +8,23 @@ from functions import setPlayer2Shape
 from functions import getMove
 from board import Board
 from Move import Move
-#introduce game
-print("Welcome to Reversi!")
-#get player 1 data
-player1 = getPlayerData(1)
-
-#Ask for Player 2 Name & Shape.(getPlayerData)
-player2 = getPlayerData(2)
-setPlayer2Shape(player1, player2)
-print("Player 2, your shape is {0}".format(player2.shape))
-
-#Generate random number to decide who goes first.
-if random.randint(1, 2) == 1:
-    currentPlayer = player1
-else:
-    currentPlayer = player2
-
-print("{0} is going first!".format(currentPlayer.name))
 
 #Generate Board + Middle Pieces (createBoard, resetBoard)
 board = Board()
 board.resetBoard()
+#introduce game
+print("Welcome to Reversi!")
+
+print("Player 2, your shape is {0}".format(board.player2.shape))
+
+#Generate random number to decide who goes first.
+if random.randint(1, 2) == 1:
+    currentPlayer = board.player1
+else:
+    currentPlayer = board.player2
+
+print("{0} is going first!".format(currentPlayer.name))
+
 #Start Loop
 #Any Valid Moves? (getValidMoves)
 while board.getValidMoves(currentPlayer):
@@ -49,10 +45,10 @@ while board.getValidMoves(currentPlayer):
     board.doMove(move)
 
     # Change current player.
-    if currentPlayer == player1:
-        currentPlayer = player2
+    if currentPlayer == board.player1:
+        currentPlayer = board.player2
     else:
-        currentPlayer = player1
+        currentPlayer = board.player1
 #end loop
 #Calculate Score & Declare Winner (calculateScore, declareWinner)
 board.drawBoard()

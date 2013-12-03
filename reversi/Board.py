@@ -1,5 +1,6 @@
 from Move import Move
 from Space import Space
+from Player import Player
 
 class Board:
     def __init__(self):
@@ -10,9 +11,13 @@ class Board:
             self.spaces.append([])
         # For each list, append 8 empty spaces
         for list in self.spaces:
-            for x in range(1,9):
+            for x in range(1,9):    
                 list.append(' ')
-
+        #get player 1 data
+        self.player1 = getPlayerData(1)
+        #Ask for Player 2 Name & Shape.(getPlayerData)
+        self.player2 = getPlayerData(2)
+        setPlayer2Shape(self.player1, self.player2)
 
     def resetBoard(self):
         # Sets all spaces to blank
@@ -27,6 +32,8 @@ class Board:
 
 
     def drawBoard(self):
+        # Draw score
+        print("{0}: {1}, {2}: {3}", player1.name, player1.score, player2.name, player2.score)
         # Draw top row numbers
         print("   1  2  3  4  5  6  7  8")
         # for each row,draw row number
