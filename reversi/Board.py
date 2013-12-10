@@ -4,7 +4,6 @@ from Move import Move
 from Space import Space
 from Player import Player
 
-
 class Board:
     def __init__(self):
         # Make empty list
@@ -16,12 +15,12 @@ class Board:
         for list in self.spaces:
             for x in range(1,9):
                 list.append(' ')
+        self.colors = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan']
         #get player 1 data
         self.player1 = self.getPlayerData(1)
         #Ask for Player 2 Name & Shape.(getPlayerData)
         self.player2 = self.getPlayerData(2)
         self.setPlayer2Shape(self.player1, self.player2)
-        self.colors = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan']
 
     def resetBoard(self):
         # Sets all spaces to blank
