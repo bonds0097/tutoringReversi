@@ -1,6 +1,9 @@
+from termcolor import cprint
+
 from Move import Move
 from Space import Space
 from Player import Player
+
 
 class Board:
     def __init__(self):
@@ -18,6 +21,7 @@ class Board:
         #Ask for Player 2 Name & Shape.(getPlayerData)
         self.player2 = self.getPlayerData(2)
         self.setPlayer2Shape(self.player1, self.player2)
+        self.colors = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan']
 
     def resetBoard(self):
         # Sets all spaces to blank
@@ -69,7 +73,8 @@ class Board:
         if playerNumber == 1:
             while not (playerShape in ["X", "O"]):
                 playerShape = input("X or O? Which will it be? (X/O)\n").upper()
-        return Player(playerShape, playerName, hints)
+        playerColor = input("What color text do you want? {0}\n".format(self.colors))
+        return Player(playerShape, playerName, hints, playerColor)
 
     def setPlayer2Shape(self, player1, player2):
         if player1.shape == "X":

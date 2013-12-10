@@ -1,6 +1,6 @@
 class Player():
 
-    def __init__(self, shape, name, hints):
+    def __init__(self, shape, name, hints, color):
         #define name
         self.name = name
         #define shape
@@ -8,4 +8,5 @@ class Player():
         #define score
         self.score = 2
         self.hints = hints
+        self.color = color
 
