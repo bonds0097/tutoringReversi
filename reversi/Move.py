@@ -1,6 +1,6 @@
 from copy import copy
 
-from space import Space
+from Space import Space
 
 class Move(Space):
 

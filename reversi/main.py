@@ -4,7 +4,7 @@
 import random
 
 from functions import getMove
-from board import Board
+from Board import Board
 from Move import Move
 
 #Generate Board + Middle Pieces (createBoard, resetBoard)
