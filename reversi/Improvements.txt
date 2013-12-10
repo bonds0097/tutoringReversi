@@ -1,4 +1,4 @@
-Display score when drawing board for both players and at end
+DONE - Display score when drawing board for both players and at end
 DONE - error handling for getMove -  for ValueError
 DONE _ hint system
 DONE - draw board when someone Wins
